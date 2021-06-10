@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of users</title>
+</head>
+<body>
+<h4>All users</h4>
+<div th:each="users : ${allUsers}">
+    <h4 th:text="${users.getUserName()}"></h4>
+</div>
+<br>
+<h4>All users by order by username</h4>
+<div th:each="users : ${allUsersByOrderByUserNameAsc}">
+    <h4 th:text="${users.getUserName()}"></h4>
+</div>
+<br>
+<h4>Only users</h4>
+<div th:each="users : ${usersByRoleUser}">
+    <h4 th:text="${users.getUserName()}"></h4>
+</div>
+<br>
+<h4>Onply admins</h4>
+<div th:each="users : ${usersByRoleAdmin}">
+    <h4 th:text="${users.getUserName()}"></h4>
+</div>
+<br>
+<a href="http://localhost:8080/" class="btn btn-link" type="button">Go back</a>
+</body>
+</html>

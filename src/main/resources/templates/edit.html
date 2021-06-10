@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit user</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/user/{id}/edit}" th:object="${userForm}">
+  <label for="userName"/>Enter username: </label>
+  <input type="text" th:field="*{userName}" id="userName"/>
+  <ul>
+    <li th:each="err : ${#fields.errors('userName')}" th:text="${err}" class="error" />
+  </ul>
+  <errors th:path="userName" th:object="${userNameError}"></errors>
+  <br>
+  <label for="firstName"/>Enter first name: </label>
+  <input type="text" th:field="*{firstName}" id="firstName"/>
+  <ul>
+    <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}" class="error" />
+  </ul>
+  <br>
+  <label for="lastName"/>Enter last name: </label>
+  <input type="text" th:field="*{lastName}" id="lastName"/>
+  <ul>
+    <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}" class="error" />
+  </ul>
+  <br>
+  <label for="password"/>Enter password: </label>
+  <input type="password" th:field="*{password}" id="password"/>
+  <ul>
+    <li th:each="err : ${#fields.errors('password')}" th:text="${err}" class="error" />
+  </ul>
+  <errors th:path="password" th:object="${passwordError}"></errors>
+  <br>
+  <div th:object="${role}">
+    <label for="role">Choose a role: </label>
+    <select class="form-select">
+      <option th:each="role : ${allRoles}" th:value="${role}" th:text="${role.substring(5)}"></option>
+    </select>
+  </div>
+  <button type="submit">Edit</button>
+  <br>
+  <a href="/">Home</a>
+</form>
+</body>
+</html>
